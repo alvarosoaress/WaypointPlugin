@@ -18,6 +18,6 @@ public class WaypointAdd implements CommandExecutor {
             }
 
         }
-        return false;
+        return true;
     }
 }
