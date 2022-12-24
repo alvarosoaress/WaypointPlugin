@@ -11,4 +11,4 @@ commands:
       - wadd
       - waypointadd
       - wa
-    usage: /<command> "Nome coordenada X Y Z "
+    usage: /<command> nomeCoordenada X Y Z

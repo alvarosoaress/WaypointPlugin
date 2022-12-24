@@ -13,7 +13,7 @@ public class WaypointAdd implements CommandExecutor {
         if(sender instanceof Player){
             Player p = (Player) sender;
 
-            p.sendMessage(ChatColor.RED+"Bão dia omi");
+            p.sendMessage(ChatColor.RED + args.toString());
         }
         return false;
     }
