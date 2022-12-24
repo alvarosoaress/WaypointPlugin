@@ -1,0 +1,14 @@
+name: Waypoint
+version: '${project.version}'
+main: me.alvaro.waypoint.Waypoint
+api-version: 1.19
+authors: [ Alvaro ]
+description: Criar e listar coordenadas de forma simples
+commands:
+  waypointAdd:
+    description: Adicionar uma nova coordenada a lista de coordenadas
+    aliases:
+      - wadd
+      - waypointadd
+      - wa
+    usage: /<command> "Nome coordenada X Y Z "
