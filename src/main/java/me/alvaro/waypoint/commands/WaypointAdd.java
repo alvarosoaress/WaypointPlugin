@@ -13,8 +13,25 @@ public class WaypointAdd implements CommandExecutor {
         if(sender instanceof Player){
             Player p = (Player) sender;
 
-            for(String qlqr: args){
-                p.sendMessage(ChatColor.RED + qlqr);
+            // testar para ver se X Y Z passados são númericos
+            for (int i = 1; i < 4; i++) {
+                try {
+                    Double.parseDouble(args[i]);
+                } catch (NumberFormatException e) {
+                    p.sendMessage(ChatColor.RED + "Passe apenas números nas coordenadas!");
+                    return false;
+                }
+            }
+
+            // testar quantidade de argumentos passados
+            if(args.length>4){
+                p.sendMessage(ChatColor.RED + "Muitos argumentos para o comando!");
+                return false;
+            }
+            else{
+                for(String qlqr: args){
+                    p.sendMessage(ChatColor.RED + "Nome: "+ args[0]);
+                }
             }
 
         }
