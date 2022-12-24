@@ -10,6 +10,7 @@ public final class Waypoint extends JavaPlugin {
         // Plugin startup logic
         System.out.println("Ta carregado patrao!");
         getCommand("waypointAdd").setExecutor(new WaypointAdd());
+        // bom dia
     }
 
     @Override
