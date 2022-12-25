@@ -15,8 +15,7 @@ public class WaypointAddCurrent implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
 
-            WayUtility.wayAddCurrent(p, args, 1, 1, args[0]);
-            return true;
+            return WayUtility.wayAddCurrent(p, args, 1, 1, args[0]);
         }
         return false;
     }

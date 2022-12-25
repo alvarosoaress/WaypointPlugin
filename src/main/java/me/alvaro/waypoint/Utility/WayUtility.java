@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import java.io.IOException;
 
 public class WayUtility {
-    public static boolean verifyArgs(int minArgs, int maxArgs, String[] args, Player p){
+    public static boolean verifyArgs(int minArgs, int maxArgs, String[] args, Player p) {
         // testar o número de argumentos passados
         if (args.length > minArgs && args.length < maxArgs) {
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Poucos argumentos para o comando!");
@@ -15,16 +15,15 @@ public class WayUtility {
         } else if (args.length > maxArgs) {
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Muitos argumentos para o comando!");
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    public static boolean wayAdd(Player p, String[] args,int minArgs, int maxArgs) {
-        if(verifyArgs(minArgs,maxArgs,args,p)){
+
+    public static boolean wayAdd(Player p, String[] args, int minArgs, int maxArgs) {
+        if (verifyArgs(minArgs, maxArgs, args, p)) {
             return false;
-        }
-        else {
+        } else {
             // pegando localização atual do player
             Location loc = p.getLocation();
 
@@ -47,7 +46,7 @@ public class WayUtility {
 
     public static boolean wayAddCurrent(Player p, String[] args, int minArgs, int maxArgs, String nome) {
         // testar o número de argumentos passados
-        if(verifyArgs(minArgs,maxArgs,args,p)){
+        if (verifyArgs(minArgs, maxArgs, args, p)) {
             return false;
         } else {
             // pegando localização atual do player
