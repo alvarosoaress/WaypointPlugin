@@ -23,7 +23,7 @@ public class WaypointAdd implements CommandExecutor {
             } else if (args.length > 4) {
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Muitos argumentos para o comando!");
                 return false;
-            } else if(util.isNum(args, p)){
+            } else if(!(util.isNum(args, p))){
                 // testar para ver se X Y Z passados são númericos
             }
             else{
