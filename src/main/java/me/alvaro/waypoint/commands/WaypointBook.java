@@ -96,7 +96,7 @@ public class WaypointBook implements CommandExecutor {
         }
 
         public void addToPage(String line) {
-            if (numLines == 13) {
+            if (numLines == 7) {
                 addPage();
                 this.currentPage = "";
                 this.numLines = 0;
