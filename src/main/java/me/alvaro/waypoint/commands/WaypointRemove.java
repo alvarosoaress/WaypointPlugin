@@ -24,8 +24,17 @@ public class WaypointRemove implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
 
+            int intIndex = 0;
+
             try {
-                waypointRm(args[0], p);
+                intIndex = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e) {
+                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros no ID!");
+                return false;
+            }
+
+            try {
+                waypointRm(intIndex, p);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -33,19 +42,11 @@ public class WaypointRemove implements CommandExecutor {
         return false;
     }
 
-    public boolean waypointRm(String index, Player p) throws IOException {
+    public boolean waypointRm(int intIndex, Player p) throws IOException {
         verifyJSON("plugins//coordsList.json");
         FileWriter file = new FileWriter("plugins//coordsList.json", true);
 
         JSONParser parser = new JSONParser();
-        int intIndex = 0;
-
-        try {
-            intIndex = Integer.parseInt(index);
-        } catch (NumberFormatException e) {
-            p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros no ID!");
-            return false;
-        }
 
         try {
             JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
