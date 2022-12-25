@@ -34,7 +34,7 @@ public class WayUtility {
             }
 
             p.sendMessage(ChatColor.MAGIC + "-".repeat(args[0].length() * 3));
-            p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "    Nova coordenada salva! ");
+            p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "Nova coordenada salva! ");
             p.sendMessage(ChatColor.YELLOW + ChatColor.BOLD.toString() + "Nome: " + args[0]);
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + args[1]);
             p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + args[2]);
@@ -59,7 +59,7 @@ public class WayUtility {
             }
 
             p.sendMessage(ChatColor.MAGIC + "-".repeat(args[0].length() * 3));
-            p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "    Nova coordenada salva! ");
+            p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "Nova coordenada salva! ");
             p.sendMessage(ChatColor.YELLOW + ChatColor.BOLD.toString() + "Nome: " + nome);
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + (int) loc.getX());
             p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + (int) loc.getY());
