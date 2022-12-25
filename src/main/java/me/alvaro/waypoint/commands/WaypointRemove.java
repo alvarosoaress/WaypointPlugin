@@ -38,24 +38,23 @@ public class WaypointRemove implements CommandExecutor {
         FileWriter file = new FileWriter("plugins//coordsList.json", true);
 
         JSONParser parser = new JSONParser();
-
         int intIndex = 0;
+
+        try {
+            intIndex = Integer.parseInt(index);
+        } catch (NumberFormatException e) {
+            p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros no ID!");
+            return false;
+        }
 
         try {
             JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
 
-            try {
-                intIndex = Integer.parseInt(index);
-            } catch (NumberFormatException e) {
-                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros no ID!");
-                return false;
-            }
-
-            if(intIndex > coordsList.size() || intIndex < coordsList.size()){
+            if (intIndex > coordsList.size() || intIndex < coordsList.size()) {
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Esse id de coordenada não existe!");
                 return false;
-            }else{
-                coordsList.remove(intIndex);
+            } else {
+                removeAux(intIndex, coordsList);
 
                 p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Coordenada removida com sucesso!");
 
@@ -75,5 +74,16 @@ public class WaypointRemove implements CommandExecutor {
             throw new RuntimeException(e);
         }
         return true;
+    }
+
+    // a seguinte função é necessária para evitar o Exception
+    // caso implementado o seguite bloco no codigo irá dar erro
+    // pelo fator do index estar entre try catch
+    // podendo index exisitr ou não, podendo ser out of bounds ou não
+    public void removeAux(int index, JSONArray coordsList) {
+        if (index >= coordsList.size()) {
+            throw new IndexOutOfBoundsException("Index is out of bounds");
+        }
+        coordsList.remove(index);
     }
 }
