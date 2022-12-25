@@ -2,5 +2,6 @@ me\alvaro\waypoint\commands\WaypointBook.class
 me\alvaro\waypoint\commands\WaypointAdd.class
 me\alvaro\waypoint\commands\WaypointBook$Book.class
 me\alvaro\waypoint\commands\WaypointList.class
+me\alvaro\waypoint\commands\WaypointRemove.class
 me\alvaro\waypoint\Utility\Utility.class
 me\alvaro\waypoint\Waypoint.class

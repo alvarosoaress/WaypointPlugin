@@ -71,7 +71,6 @@ public class Utility {
             coords.put("Y", y);
             coords.put("Z", z);
             coords.put("W", w.toString());
-            coords.put("ID", coordsList.size());
 
             coordsList.add(coords);
 
@@ -105,6 +104,8 @@ public class Utility {
     }
 
     public static void printCoords(Player p, JSONArray coordsList) {
+        // criando var index para servir de ID
+        int index = 0;
         for (Object obj : coordsList) {
             JSONObject coords = (JSONObject) obj;
             String world = verifyRegex("_(.+?)[{}]", coords.get("W").toString());
@@ -117,8 +118,9 @@ public class Utility {
             p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + coords.get("Y").toString());
             p.sendMessage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + coords.get("Z").toString());
             p.sendMessage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + world);
-            p.sendMessage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
+            p.sendMessage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + index);
             p.sendMessage(ChatColor.WHITE + "-".repeat(coords.get("Nome").toString().length() * 3));
+            index++;
         }
     }
 

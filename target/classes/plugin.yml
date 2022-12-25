@@ -20,3 +20,8 @@ commands:
     aliases:
       - wbook
     usage: "Uso: /<command>"
+  waypointRemove:
+    description: Remover uma coordenada salva pelo seu ID
+    aliases:
+      - wremove
+    usage: "Uso: /<command> ID"

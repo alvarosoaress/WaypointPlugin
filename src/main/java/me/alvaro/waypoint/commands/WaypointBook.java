@@ -137,6 +137,7 @@ public class WaypointBook implements CommandExecutor {
             } else {
                 JSONParser parser = new JSONParser();
                 JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
+                int index = 0;
                 for (Object obj : coordsList) {
                     JSONObject coords = (JSONObject) obj;
                     String world = verifyRegex("_(.+?)[{}]", coords.get("W").toString());
@@ -148,9 +149,9 @@ public class WaypointBook implements CommandExecutor {
                     addToPage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + coords.get("Y").toString());
                     addToPage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + coords.get("Z").toString());
                     addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + world);
-                    addToPage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
+                    addToPage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + index);
                     addToPage("");
-
+                    index++;
                     // CRIAR O COMANDO /wAddLocal
                     // PARA SALVAR A COORDENADA ATUAL DO PLAYER
                     // SEM ELE PRECISAR DIGITAR X Y Z APENAS O NOME
