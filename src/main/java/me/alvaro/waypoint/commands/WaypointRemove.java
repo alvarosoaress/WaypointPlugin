@@ -49,14 +49,12 @@ public class WaypointRemove implements CommandExecutor {
 
         try {
             JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
-            System.out.println("TAMANHO DO ARRAY : "+coordsList.size());
-            System.out.println("NUMERO: "+intIndex);
-            if (intIndex > coordsList.size() || intIndex < coordsList.size()) {
+
+            if (intIndex > coordsList.size() || intIndex < 0) {
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Esse id de coordenada não existe!");
                 return false;
             } else {
-
-                removeAux(intIndex, coordsList);
+                coordsList.remove(intIndex);
 
                 p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Coordenada removida com sucesso!");
 
@@ -76,16 +74,5 @@ public class WaypointRemove implements CommandExecutor {
             throw new RuntimeException(e);
         }
         return true;
-    }
-
-    // a seguinte função é necessária para evitar o Exception
-    // caso implementado o seguite bloco no codigo irá dar erro
-    // pelo fator do index estar entre try catch
-    // podendo index exisitr ou não, podendo ser out of bounds ou não
-    public void removeAux(int index, JSONArray coordsList) {
-        if (index >= coordsList.size()) {
-            throw new IndexOutOfBoundsException("Index is out of bounds");
-        }
-        coordsList.remove(index);
     }
 }
