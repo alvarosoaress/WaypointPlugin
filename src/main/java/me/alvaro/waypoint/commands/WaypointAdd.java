@@ -27,10 +27,9 @@ public class WaypointAdd implements CommandExecutor {
             } else if (!(util.isNum(args, p))) {
                 // testar para ver se X Y Z passados são númericos
             } else {
-                Location loc = null;
-                p.getLocation(loc);
+                Location loc = p.getLocation();
 
-                p.sendMessage(String.valueOf((int)loc.getX() + " " + (int)loc.getY() + " " + (int)loc.getZ()));
+                p.sendMessage(String.valueOf(loc.getX() + " " + loc.getY() + " " + loc.getZ()));
 
                 p.sendMessage(ChatColor.WHITE + "-".repeat(args[0].length() * 3));
                 p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "Nome: " + args[0]);
