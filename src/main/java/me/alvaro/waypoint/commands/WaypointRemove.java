@@ -30,6 +30,7 @@ public class WaypointRemove implements CommandExecutor {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            return true;
         }
         return false;
     }
@@ -56,7 +57,9 @@ public class WaypointRemove implements CommandExecutor {
             } else {
                 coordsList.remove(intIndex);
 
-                p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Coordenada removida com sucesso!");
+                JSONObject coords = (JSONObject) coordsList.get(intIndex);
+
+                p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Coordenada "+coords.get("Nome")+" removida com sucesso!");
 
                 FileOutputStream writer = new FileOutputStream("plugins//coordsList.json");
                 writer.write(("").getBytes());
@@ -65,7 +68,6 @@ public class WaypointRemove implements CommandExecutor {
 
                 file.close();
             }
-
             file.close();
 
         } catch (IOException e) {
