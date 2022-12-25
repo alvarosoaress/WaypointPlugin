@@ -1,6 +1,7 @@
 package me.alvaro.waypoint.commands;
 
 import me.alvaro.waypoint.Utility.Utility;
+import me.alvaro.waypoint.Utility.WayUtility;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -14,45 +15,11 @@ public class WaypointAdd implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (sender instanceof Player) {
             Player p = (Player) sender;
-
-            // testar o número de argumentos passados
-            if (args.length > 0 && args.length < 4) {
-                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Poucos argumentos para o comando!");
-                return false;
-            } else if (args.length > 4) {
-                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Muitos argumentos para o comando!");
-                return false;
-            } else if (!(Utility.isNum(args, p))) {
-                // testar para ver se X Y Z passados são númericos
-            } else {
-                // pegando localização atual do player
-                Location loc = p.getLocation();
-//
-//                try {
-//                    Utility.addJson((int) loc.getX(), (int) loc.getY(), (int) loc.getZ(), loc.getWorld());
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-
-                try {
-                    Utility.addJson(args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]),Integer.parseInt(args[3]),loc.getWorld(), p);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-                p.sendMessage(ChatColor.MAGIC + "-".repeat(args[0].length() * 3));
-                p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "    Nova coordenada salva! ");
-                p.sendMessage(ChatColor.YELLOW + ChatColor.BOLD.toString() + "Nome: " + args[0]);
-                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + args[1]);
-                p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + args[2]);
-                p.sendMessage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + args[3]);
-                p.sendMessage(ChatColor.MAGIC + "-".repeat(args[0].length() * 3));
+                WayUtility.wayAdd(p,args,1,4);
                 return true;
             }
-        }
         return false;
+        }
     }
-}

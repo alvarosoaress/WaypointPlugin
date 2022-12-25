@@ -25,3 +25,8 @@ commands:
     aliases:
       - wremove
     usage: "Uso: /<command> ID"
+  waypointAddCurrent:
+    description: Adicionar a coordenada atual a lista de coordenadas
+    aliases:
+      - waddcur
+    usage: "Uso: /<command> nomeCoordenada"
