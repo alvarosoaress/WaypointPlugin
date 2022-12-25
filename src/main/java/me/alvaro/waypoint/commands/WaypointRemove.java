@@ -45,7 +45,7 @@ public class WaypointRemove implements CommandExecutor {
             JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
 
             try {
-                Integer.parseInt(index);
+                intIndex = Integer.parseInt(index);
             } catch (NumberFormatException e) {
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros no ID!");
                 return false;
