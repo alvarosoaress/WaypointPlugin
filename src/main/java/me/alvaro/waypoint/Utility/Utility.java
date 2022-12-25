@@ -107,7 +107,7 @@ public class Utility {
     public static void printCoords(Player p, JSONArray coordsList) {
         for (Object obj : coordsList) {
             JSONObject coords = (JSONObject) obj;
-            String world = verifyRegex("_(.+)", coords.get("W").toString());
+            String world = verifyRegex("_(.+?)[{}]", coords.get("W").toString());
             if (world == "false") {
                 world = "overworld";
             }

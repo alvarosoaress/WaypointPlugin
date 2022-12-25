@@ -103,7 +103,7 @@ public class WaypointBook implements CommandExecutor {
         public void addToPage(String line) {
             // caso o numero de linhas for >= 11
             // uma nova página é criada
-            if (numLines >= 11) {
+            if (numLines >= 13) {
                 addPage();
                 this.currentPage = "";
                 this.numLines = 0;
@@ -139,7 +139,7 @@ public class WaypointBook implements CommandExecutor {
                 JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
                 for (Object obj : coordsList) {
                     JSONObject coords = (JSONObject) obj;
-                    String world = verifyRegex("_(.+)", coords.get("W").toString());
+                    String world = verifyRegex("_(.+?)[{}]", coords.get("W").toString());
                     if (world == "false") {
                         world = "overworld";
                     }
@@ -150,11 +150,6 @@ public class WaypointBook implements CommandExecutor {
                     addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + world);
                     addToPage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
                     addToPage("");
-
-                    // ARRUMAR O WORLD
-                    // TRATAR A STRING PARA APARECER APENAS
-                    // O NOME DO MUNDO EM SI
-                    // DESCOMENTAR AONDE ELE TÁ ERRADO
 
                     // CRIAR O COMANDO /wAddLocal
                     // PARA SALVAR A COORDENADA ATUAL DO PLAYER
