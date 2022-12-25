@@ -9,7 +9,7 @@ public class Utility {
             try {
                 Double.parseDouble(args[i]);
             } catch (NumberFormatException e) {
-                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números nas coordenadas!");
+                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros nas coordenadas!");
                 return false;
             }
         }
