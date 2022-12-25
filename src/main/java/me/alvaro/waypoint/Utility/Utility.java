@@ -1,4 +1,4 @@
-package me.alvaro.waypoint.commands;
+package me.alvaro.waypoint.Utility;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
