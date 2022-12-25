@@ -25,10 +25,10 @@ public class Utility {
     }
 
     public void addJson(int x, int y, int z, World w) throws IOException, ParseException {
-        FileWriter file = new FileWriter("coordsList.json", false);
+        FileWriter file = new FileWriter("plugins//coordsList.json", false);
 
         JSONParser parser = new JSONParser();
-        JSONObject coordsList = (JSONObject) parser.parse(new FileReader("coordsList.json"));
+        JSONObject coordsList = (JSONObject) parser.parse(new FileReader("plugins//coordsList.json"));
 
         JSONObject coords = new JSONObject();
 
