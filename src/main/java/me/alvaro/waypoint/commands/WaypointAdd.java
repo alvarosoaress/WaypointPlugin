@@ -43,16 +43,16 @@ public class WaypointAdd implements CommandExecutor {
                     throw new RuntimeException(e);
                 }
 
-                p.sendMessage(ChatColor.WHITE + "-".repeat(args[0].length() * 3));
-                p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "\tNova coordenada salva! ");
-                p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "Nome: " + args[0]);
+                p.sendMessage(ChatColor.MAGIC + "-".repeat(args[0].length() * 3));
+                p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "    Nova coordenada salva! ");
+                p.sendMessage(ChatColor.YELLOW + ChatColor.BOLD.toString() + "Nome: " + args[0]);
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + args[1]);
                 p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + args[2]);
                 p.sendMessage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + args[3]);
-                p.sendMessage(ChatColor.WHITE + "-".repeat(args[0].length() * 3));
+                p.sendMessage(ChatColor.MAGIC + "-".repeat(args[0].length() * 3));
                 return true;
             }
         }
-        return true;
+        return false;
     }
 }
