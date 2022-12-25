@@ -15,8 +15,8 @@ commands:
     aliases:
       - wlist
     usage: "Uso: /<command>"
-    waypointBook:
-      description: Receber um livro com todas coordenadas salvas
-      aliases:
-        - wbook
-      usage: "Uso: /<command>"
+  waypointBook:
+    description: Receber um livro com todas coordenadas salvas
+    aliases:
+      - wbook
+    usage: "Uso: /<command>"

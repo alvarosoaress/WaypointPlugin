@@ -20,33 +20,37 @@ import java.io.IOException;
 public class WaypointBook implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player p = (Player) sender;
 
-        // criando o livro
-        Book book = new Book();
+        if (sender instanceof Player) {
+            Player p = (Player) sender;
 
-        // definindo titulo e autor do livro
-        book.setTitle(ChatColor.GREEN + "Lista de Waypoints");
-        book.setAuthor(ChatColor.RED + p.getName());
+            // criando o livro
+            Book book = new Book();
 
-        // criando páginas pegando informações salvas do JSON
-        try {
-            book.writeCoords(p);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+            // definindo titulo e autor do livro
+            book.setTitle(ChatColor.GREEN + "Lista de Waypoints");
+            book.setAuthor(ChatColor.RED + p.getName());
+
+            // criando páginas pegando informações salvas do JSON
+            try {
+                book.writeCoords(p);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+
+            // adicionando page ao meta
+            book.addPage();
+
+            // adicionando meta ao book
+            book.addInfo();
+
+            // dando o livro para o player
+            book.giveBook(p);
+
+            return true;
         }
-
-        // adicionando page ao meta
-        book.addPage();
-
-        // adicionando meta ao book
-        book.addInfo();
-
-        // dando o livro para o player
-        book.giveBook(p);
-
         return false;
     }
 
