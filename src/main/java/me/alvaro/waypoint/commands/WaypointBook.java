@@ -28,8 +28,8 @@ public class WaypointBook implements CommandExecutor {
             Book book = new Book();
 
             // definindo titulo e autor do livro
-            book.setTitle(ChatColor.GREEN + "Lista de Waypoints");
-            book.setAuthor(ChatColor.RED + p.getName());
+            book.setTitle(ChatColor.GREEN + ChatColor.BOLD.toString() + "Lista de Waypoints");
+            book.setAuthor(ChatColor.RED + ChatColor.BOLD.toString() + p.getName());
 
             // criando páginas pegando informações salvas do JSON
             try {
@@ -144,6 +144,7 @@ public class WaypointBook implements CommandExecutor {
                     addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
                     addToPage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
                     addToPage(ChatColor.WHITE + "-".repeat(coords.get("Nome").toString().length() * 3));
+                    addPage();
                 }
                 file.close();
 
