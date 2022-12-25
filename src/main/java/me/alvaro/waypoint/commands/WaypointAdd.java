@@ -18,25 +18,25 @@ public class WaypointAdd implements CommandExecutor {
                 try {
                     Double.parseDouble(args[i]);
                 } catch (NumberFormatException e) {
-                    p.sendMessage(ChatColor.RED.BOLD + "Passe apenas números nas coordenadas!");
+                    p.sendMessage(ChatColor.RED+ChatColor.BOLD.toString() + "Passe apenas números nas coordenadas!");
                     return false;
                 }
             }
 
             // testar quantidade de argumentos passados
             if (args.length > 4) {
-                p.sendMessage(ChatColor.RED.BOLD + "Muitos argumentos para o comando!");
+                p.sendMessage(ChatColor.RED+ChatColor.BOLD.toString() + "Muitos argumentos para o comando!");
                 return false;
-            } else if (args.length < 1) {
-                p.sendMessage(ChatColor.RED.BOLD + "Poucos argumentos para o comando!");
+            } else if (args.length < 4) {
+                p.sendMessage(ChatColor.RED+ChatColor.BOLD.toString() + "Poucos argumentos para o comando!");
                 return false;
             } else {
                 for (String qlqr : args) {
                     p.sendMessage(ChatColor.WHITE + "------------------------------");
-                    p.sendMessage(ChatColor.GOLD.BOLD + "Nome: " + args[0]);
-                    p.sendMessage(ChatColor.RED.BOLD + "X: " + args[1]);
-                    p.sendMessage(ChatColor.GREEN.BOLD + "Y: " + args[2]);
-                    p.sendMessage(ChatColor.BLUE.BOLD + "Z: " + args[3]);
+                    p.sendMessage(ChatColor.GOLD+ChatColor.BOLD.toString() + "Nome: " + args[0]);
+                    p.sendMessage(ChatColor.RED+ChatColor.BOLD.toString() + "X: " + args[1]);
+                    p.sendMessage(ChatColor.GREEN+ChatColor.BOLD.toString() + "Y: " + args[2]);
+                    p.sendMessage(ChatColor.BLUE+ChatColor.BOLD.toString() + "Z: " + args[3]);
                     p.sendMessage(ChatColor.WHITE + "------------------------------");
                     return true;
                 }
