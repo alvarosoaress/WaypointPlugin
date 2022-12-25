@@ -17,9 +17,8 @@ public class WaypointAdd implements CommandExecutor {
             Player p = (Player) sender;
             if (Utility.isNum(args, p)) {
                 return false;
-            }else{
-                return WayUtility.wayAdd(p, args, 1, 4);
             }
+            return WayUtility.wayAdd(p, args, 1, 4);
         }
         return false;
     }

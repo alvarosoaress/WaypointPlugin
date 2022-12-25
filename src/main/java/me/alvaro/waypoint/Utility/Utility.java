@@ -19,17 +19,17 @@ public class Utility {
     public static boolean isNum(String[] args, Player p) {
         if (args.length <= 0) {
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Preencha todos os parametros!");
-            return false;
+            return true;
         }
         for (int i = 1; i < 4; i++) {
             try {
                 Double.parseDouble(args[i]);
             } catch (NumberFormatException e) {
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros nas coordenadas!");
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     // verificar se o arquivo JSON está vazio
