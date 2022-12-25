@@ -2,14 +2,12 @@ package me.alvaro.waypoint.commands;
 
 import me.alvaro.waypoint.Utility.Utility;
 import me.alvaro.waypoint.Utility.WayUtility;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.io.IOException;
 
 public class WaypointAdd implements CommandExecutor {
 
@@ -19,9 +17,9 @@ public class WaypointAdd implements CommandExecutor {
             Player p = (Player) sender;
             if (Utility.isNum(args, p)) {
                 return false;
+            }else{
+                return WayUtility.wayAdd(p, args, 1, 4);
             }
-            return WayUtility.wayAdd(p, args, 1, 4);
-
         }
         return false;
     }
