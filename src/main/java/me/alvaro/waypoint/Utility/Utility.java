@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class Utility {
     public static boolean isNum(String[] args, Player p) {
-        if(args.length < 0){
+        if(args.length <= 0){
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Preencha todos os parametros!");
             return false;
         }
