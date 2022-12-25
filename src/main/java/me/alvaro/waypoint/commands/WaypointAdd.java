@@ -10,7 +10,7 @@ public class WaypointAdd implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player p = (Player) sender;
 
             // testar para ver se X Y Z passados são númericos
@@ -18,19 +18,27 @@ public class WaypointAdd implements CommandExecutor {
                 try {
                     Double.parseDouble(args[i]);
                 } catch (NumberFormatException e) {
-                    p.sendMessage(ChatColor.RED + "Passe apenas números nas coordenadas!");
+                    p.sendMessage(ChatColor.RED.BOLD + "Passe apenas números nas coordenadas!");
                     return false;
                 }
             }
 
             // testar quantidade de argumentos passados
-            if(args.length>4){
-                p.sendMessage(ChatColor.RED + "Muitos argumentos para o comando!");
+            if (args.length > 4) {
+                p.sendMessage(ChatColor.RED.BOLD + "Muitos argumentos para o comando!");
                 return false;
-            }
-            else{
-                for(String qlqr: args){
-                    p.sendMessage(ChatColor.RED + "Nome: "+ args[0]);
+            } else if (args.length < 1) {
+                p.sendMessage(ChatColor.RED.BOLD + "Poucos argumentos para o comando!");
+                return false;
+            } else {
+                for (String qlqr : args) {
+                    p.sendMessage(ChatColor.WHITE + "------------------------------");
+                    p.sendMessage(ChatColor.GOLD.BOLD + "Nome: " + args[0]);
+                    p.sendMessage(ChatColor.RED.BOLD + "X: " + args[1]);
+                    p.sendMessage(ChatColor.GREEN.BOLD + "Y: " + args[2]);
+                    p.sendMessage(ChatColor.BLUE.BOLD + "Z: " + args[3]);
+                    p.sendMessage(ChatColor.WHITE + "------------------------------");
+                    return true;
                 }
             }
 
