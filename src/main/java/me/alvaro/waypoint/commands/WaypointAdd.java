@@ -3,13 +3,10 @@ package me.alvaro.waypoint.commands;
 import me.alvaro.waypoint.Utility.Utility;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
@@ -41,7 +38,7 @@ public class WaypointAdd implements CommandExecutor {
 //                }
 
                 try {
-                    Utility.addJson(args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]),Integer.parseInt(args[3]),loc.getWorld());
+                    Utility.addJson(args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]),Integer.parseInt(args[3]),loc.getWorld(), p);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

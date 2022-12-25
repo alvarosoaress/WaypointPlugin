@@ -1,6 +1,5 @@
 package me.alvaro.waypoint.Utility;
 
-import com.google.gson.JsonObject;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -16,6 +15,10 @@ import java.io.IOException;
 
 public class Utility {
     public static boolean isNum(String[] args, Player p) {
+        if(args.length < 0){
+            p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Preencha todos os parametros!");
+            return false;
+        }
         for (int i = 1; i < 4; i++) {
             try {
                 Double.parseDouble(args[i]);
@@ -42,13 +45,22 @@ public class Utility {
     }
 
     // função para adicionar coordenada ao JSON
-    public static void addJson(String nome, int x, int y, int z, World w) throws IOException {
+    public static boolean addJson(String nome, int x, int y, int z, World w, Player p) throws IOException {
         verifyJSON("plugins//coordsList.json");
         FileWriter file = new FileWriter("plugins//coordsList.json", true);
 
         JSONParser parser = new JSONParser();
         try {
             JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
+
+            // verificando se o nome passado já existe no JSON
+            for (Object obj: coordsList) {
+                JSONObject coords = (JSONObject) obj;
+                if(coords.get("Nome").toString() == nome){
+                    p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Esse nome de coordenada já existe!");
+                    return false;
+                }
+            }
 
             JSONObject coords = new JSONObject();
 
@@ -72,6 +84,7 @@ public class Utility {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+        return true;
     }
 
     public static void printCoords(Player p, JSONArray coordsList) {

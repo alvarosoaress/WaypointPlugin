@@ -9,6 +9,9 @@ commands:
     description: Adicionar uma nova coordenada a lista de coordenadas
     aliases:
       - wadd
-      - waypointadd
-      - wa
-    usage: /<command> nomeCoordenada X Y Z
+    usage: /<command> [nomeCoordenada] [X] [Y] [Z]
+  waypointList:
+    description: Listar todas coordendas salvas
+    aliases:
+      - wlist
+    usage: /<command>

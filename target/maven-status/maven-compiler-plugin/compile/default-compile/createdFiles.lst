@@ -1,3 +1,4 @@
 me\alvaro\waypoint\commands\WaypointAdd.class
 me\alvaro\waypoint\Utility\Utility.class
+me\alvaro\waypoint\commands\WaypointList.class
 me\alvaro\waypoint\Waypoint.class
