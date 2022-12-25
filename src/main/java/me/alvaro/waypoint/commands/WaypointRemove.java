@@ -24,7 +24,7 @@ public class WaypointRemove implements CommandExecutor {
 
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            System.out.println("NUMERO: "+args[0]);
+
             try {
                 waypointRm(args[0], p);
             } catch (IOException e) {
@@ -50,7 +50,7 @@ public class WaypointRemove implements CommandExecutor {
         try {
             JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
             System.out.println("TAMANHO DO ARRAY : "+coordsList.size());
-
+            System.out.println("NUMERO: "+intIndex);
             if (intIndex > coordsList.size() || intIndex < coordsList.size()) {
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Esse id de coordenada não existe!");
                 return false;
