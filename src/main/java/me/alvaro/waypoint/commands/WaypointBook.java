@@ -100,8 +100,6 @@ public class WaypointBook implements CommandExecutor {
                 addPage();
                 this.currentPage = "";
                 this.numLines = 0;
-                this.currentPage = this.currentPage + title + "\n";
-                this.currentPage = this.currentPage + line + "\n";
             } else if (numLines == 0) {
                 this.currentPage = this.currentPage + title + "\n";
                 this.currentPage = this.currentPage + line + "\n";
@@ -141,10 +139,9 @@ public class WaypointBook implements CommandExecutor {
                     addToPage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + coords.get("X").toString());
                     addToPage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + coords.get("Y").toString());
                     addToPage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + coords.get("Z").toString());
-                    addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
+               //     addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
                     addToPage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
                     addToPage(ChatColor.WHITE + "-".repeat(coords.get("Nome").toString().length() * 3));
-                    addPage();
                 }
                 file.close();
 

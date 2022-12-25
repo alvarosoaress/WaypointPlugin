@@ -95,7 +95,7 @@ public class Utility {
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + coords.get("X").toString());
             p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + coords.get("Y").toString());
             p.sendMessage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + coords.get("Z").toString());
-            p.sendMessage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
+          //  p.sendMessage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
             p.sendMessage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
             p.sendMessage(ChatColor.WHITE + "-".repeat(coords.get("Nome").toString().length() * 3));
         }
