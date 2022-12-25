@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -19,22 +20,13 @@ import static me.alvaro.waypoint.Utility.Utility.verifyJSON;
 
 public class WaypointRemove implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (sender instanceof Player) {
             Player p = (Player) sender;
 
-            int intIndex = 0;
-
             try {
-                intIndex = Integer.parseInt(args[0]);
-            } catch (NumberFormatException e) {
-                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros no ID!");
-                return false;
-            }
-
-            try {
-                waypointRm(intIndex, p);
+                waypointRm(args[0], p);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -42,11 +34,18 @@ public class WaypointRemove implements CommandExecutor {
         return false;
     }
 
-    public boolean waypointRm(int intIndex, Player p) throws IOException {
-        verifyJSON("plugins//coordsList.json");
+    public boolean waypointRm(String index, Player p) throws IOException {
         FileWriter file = new FileWriter("plugins//coordsList.json", true);
 
         JSONParser parser = new JSONParser();
+        int intIndex = 0;
+
+        try {
+            intIndex = Integer.parseInt(index);
+        } catch (NumberFormatException e) {
+            p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros no ID!");
+            return false;
+        }
 
         try {
             JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
@@ -55,6 +54,7 @@ public class WaypointRemove implements CommandExecutor {
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Esse id de coordenada não existe!");
                 return false;
             } else {
+
                 removeAux(intIndex, coordsList);
 
                 p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Coordenada removida com sucesso!");
@@ -83,6 +83,7 @@ public class WaypointRemove implements CommandExecutor {
     // podendo index exisitr ou não, podendo ser out of bounds ou não
     public void removeAux(int index, JSONArray coordsList) {
         if (index >= coordsList.size()) {
+            System.out.println("TAMANHO DO ARRAY : "+coordsList.size());
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
         coordsList.remove(index);
