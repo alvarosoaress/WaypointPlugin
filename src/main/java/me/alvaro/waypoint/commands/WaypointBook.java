@@ -17,6 +17,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import static me.alvaro.waypoint.Utility.Utility.verifyRegex;
+
 public class WaypointBook implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -137,12 +139,15 @@ public class WaypointBook implements CommandExecutor {
                 JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
                 for (Object obj : coordsList) {
                     JSONObject coords = (JSONObject) obj;
-
+                    String world = verifyRegex("_(.+)", coords.get("W").toString());
+                    if (world == "false") {
+                        world = "overworld";
+                    }
                     addToPage(ChatColor.GOLD + ChatColor.BOLD.toString() + "Nome: " + coords.get("Nome").toString());
                     addToPage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + coords.get("X").toString());
                     addToPage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + coords.get("Y").toString());
                     addToPage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + coords.get("Z").toString());
-                    //     addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
+                    addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + world);
                     addToPage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
                     addToPage("");
 

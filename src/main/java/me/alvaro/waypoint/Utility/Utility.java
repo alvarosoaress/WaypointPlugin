@@ -12,10 +12,12 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utility {
     public static boolean isNum(String[] args, Player p) {
-        if(args.length <= 0){
+        if (args.length <= 0) {
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Preencha todos os parametros!");
             return false;
         }
@@ -54,9 +56,9 @@ public class Utility {
             JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
 
             // verificando se o nome passado já existe no JSON
-            for (Object obj: coordsList) {
+            for (Object obj : coordsList) {
                 JSONObject coords = (JSONObject) obj;
-                if(coords.get("Nome").toString() == nome){
+                if (coords.get("Nome").toString() == nome) {
                     p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Esse nome de coordenada já existe!");
                     return false;
                 }
@@ -87,19 +89,37 @@ public class Utility {
         return true;
     }
 
+    public static String verifyRegex(String reg, String str) {
+        // Compile o padrão de expressão regular
+        Pattern pattern = Pattern.compile(reg);
+
+        // Crie um Matcher para a string
+        Matcher matcher = pattern.matcher(str);
+
+        // Verifique se o padrão ocorre na string
+        if (matcher.find()) {
+            // Imprima o resultado
+            return matcher.group(1);
+        }
+        return "false"; //ok aqui me superei
+    }
+
     public static void printCoords(Player p, JSONArray coordsList) {
-        for (Object obj: coordsList) {
+        for (Object obj : coordsList) {
             JSONObject coords = (JSONObject) obj;
+            String world = verifyRegex("_(.+)", coords.get("W").toString());
+            if (world == "false") {
+                world = "overworld";
+            }
             p.sendMessage(ChatColor.WHITE + "-".repeat(coords.get("Nome").toString().length() * 3));
             p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "Nome: " + coords.get("Nome").toString());
             p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + coords.get("X").toString());
             p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + coords.get("Y").toString());
             p.sendMessage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + coords.get("Z").toString());
-          //  p.sendMessage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
+            p.sendMessage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + world);
             p.sendMessage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
             p.sendMessage(ChatColor.WHITE + "-".repeat(coords.get("Nome").toString().length() * 3));
         }
-
     }
 
     public static boolean readJson(Player p) throws IOException {
