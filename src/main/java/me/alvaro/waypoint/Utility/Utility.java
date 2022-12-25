@@ -27,6 +27,9 @@ public class Utility {
             } catch (NumberFormatException e) {
                 p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros nas coordenadas!");
                 return true;
+            }catch (IndexOutOfBoundsException e) {
+                p.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "Passe apenas números inteiros nas coordenadas!");
+                return true;
             }
         }
         return false;
