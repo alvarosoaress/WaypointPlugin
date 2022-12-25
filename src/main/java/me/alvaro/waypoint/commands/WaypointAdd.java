@@ -38,6 +38,7 @@ public class WaypointAdd implements CommandExecutor {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 } catch (ParseException e) {
+                    System.out.println(e.getMessage());
                     throw new RuntimeException(e);
                 }
 
