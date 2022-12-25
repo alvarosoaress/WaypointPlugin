@@ -61,7 +61,10 @@ public class WaypointBook implements CommandExecutor {
         int numPages = 0;
         int numLines = 0;
 
+        // criando o item do tipo livro escrito
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
+
+        // criando a meta(Metadados) do livro, o "conteúdo" dele
         BookMeta bookMeta = (BookMeta) book.getItemMeta();
 
         public String getTitle() {
@@ -96,6 +99,8 @@ public class WaypointBook implements CommandExecutor {
         }
 
         public void addToPage(String line) {
+            // caso o numero de linhas for >= 11
+            // uma nova página é criada
             if (numLines >= 11) {
                 addPage();
                 this.currentPage = "";
@@ -106,6 +111,7 @@ public class WaypointBook implements CommandExecutor {
             }
         }
 
+        // adicionar os metadados do livro ao livro
         public void addInfo() {
             book.setItemMeta(bookMeta);
         }
@@ -139,6 +145,28 @@ public class WaypointBook implements CommandExecutor {
                     //     addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
                     addToPage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
                     addToPage("");
+
+                    // ARRUMAR O WORLD
+                    // TRATAR A STRING PARA APARECER APENAS
+                    // O NOME DO MUNDO EM SI
+                    // DESCOMENTAR AONDE ELE TÁ ERRADO
+
+                    // CRIAR O COMANDO /wAddLocal
+                    // PARA SALVAR A COORDENADA ATUAL DO PLAYER
+                    // SEM ELE PRECISAR DIGITAR X Y Z APENAS O NOME
+
+                    // CRIAR UM BANCO PESSOAL DE WAYPOINTS
+                    // APENAS O PLAYER PODERÁ ACESSAR
+                    // BASEADO EM SEU NICKNAME
+                    // COLOCAR PARA OS OPS PODEREM VER OS PESSOAIS DE PLAYERS
+
+                    // CRIAR VARIAÇÕES DO /wAdd
+                    // COM PARAMETROS OPCIONAIS
+                    // COMO ELE SER PRIVADO OU SER UM /wAddLocal
+
+                    // CRIAR O /wFast
+                    // PARA SALVAR A COORDENADA ATUAL
+                    // SEM DIGITAR NADA, O NOME É AUTOMATICO
                 }
                 file.close();
 
