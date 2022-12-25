@@ -100,14 +100,10 @@ public class WaypointBook implements CommandExecutor {
                 addPage();
                 this.currentPage = "";
                 this.numLines = 0;
-            } else if (numLines == 0) {
-                this.currentPage = this.currentPage + title + "\n";
-                this.currentPage = this.currentPage + line + "\n";
             } else {
                 this.currentPage = this.currentPage + line + "\n";
+                ++numLines;
             }
-
-            ++numLines;
         }
 
         public void addInfo() {
@@ -135,16 +131,16 @@ public class WaypointBook implements CommandExecutor {
                 JSONArray coordsList = (JSONArray) parser.parse(new FileReader("plugins//coordsList.json"));
                 for (Object obj : coordsList) {
                     JSONObject coords = (JSONObject) obj;
-                    addToPage("\n\n\n\n");
+                    addToPage("");
+                    addToPage("");
+                    addToPage("");
                     addToPage(ChatColor.GOLD + ChatColor.BOLD.toString() + "Nome: " + coords.get("Nome").toString());
                     addToPage(ChatColor.RED + ChatColor.BOLD.toString() + "X: " + coords.get("X").toString());
                     addToPage(ChatColor.GREEN + ChatColor.BOLD.toString() + "Y: " + coords.get("Y").toString());
                     addToPage(ChatColor.BLUE + ChatColor.BOLD.toString() + "Z: " + coords.get("Z").toString());
                     //     addToPage(ChatColor.DARK_BLUE + ChatColor.BOLD.toString() + "Mundo: " + coords.get("W").toString());
                     addToPage(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "ID: " + coords.get("ID").toString());
-                    for (int i = numLines; numLines == 14; numLines++) {
-                        addToPage("");
-                    }
+                    numLines = 14;
                 }
                 file.close();
 
