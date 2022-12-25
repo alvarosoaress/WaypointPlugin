@@ -7,6 +7,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 
 public class WaypointAdd implements CommandExecutor {
 
@@ -29,7 +33,13 @@ public class WaypointAdd implements CommandExecutor {
             } else {
                 Location loc = p.getLocation();
 
-                p.sendMessage(String.valueOf(loc.getX() + " " + loc.getY() + " " + loc.getZ()));
+                try {
+                    util.addJson((int) loc.getX(), (int) loc.getY(), (int) loc.getZ(), loc.getWorld());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
 
                 p.sendMessage(ChatColor.WHITE + "-".repeat(args[0].length() * 3));
                 p.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "Nome: " + args[0]);
