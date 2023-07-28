@@ -38,7 +38,7 @@ public class WaypointTeleportTabCompletion implements TabCompleter {
                 // qual nome tiver será adiconado à lista
                 // (auto-complete)
                 for (String name : WaypointNames){
-                    if(name.contains(args[0].toLowerCase())){
+                    if(name.toLowerCase().contains(args[0].toLowerCase())){
                         completions.add(name);
                     }
                 }

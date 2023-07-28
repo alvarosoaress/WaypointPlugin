@@ -88,7 +88,7 @@ public class WaypointTeleport implements CommandExecutor {
                 for (Object obj : coordsList) {
                     JSONObject coords = (JSONObject) obj;
 
-                    if (String.valueOf(coords.get("Nome")).equals(argument)) {
+                    if (String.valueOf(coords.get("Nome")).equalsIgnoreCase(argument)) {
                         double X = Double.parseDouble((String.valueOf(coords.get("X"))));
                         double Y = Double.parseDouble((String.valueOf(coords.get("Y"))));
                         double Z = Double.parseDouble((String.valueOf(coords.get("Z"))));
