@@ -50,7 +50,7 @@ public class Utility {
     }
 
     // função para adicionar coordenada ao JSON
-    public static boolean addJson(String nome, int x, int y, int z, World w, Player p) throws IOException {
+    public static boolean addJson(String nome, int x, int y, int z, String w, Player p) throws IOException {
         verifyJSON("plugins//coordsList.json");
         FileWriter file = new FileWriter("plugins//coordsList.json", true);
 
@@ -73,7 +73,7 @@ public class Utility {
             coords.put("X", x);
             coords.put("Y", y);
             coords.put("Z", z);
-            coords.put("W", w.toString());
+            coords.put("W", w);
 
             coordsList.add(coords);
 
@@ -111,7 +111,7 @@ public class Utility {
         int index = 0;
         for (Object obj : coordsList) {
             JSONObject coords = (JSONObject) obj;
-            String world = verifyRegex("_(.+?)[{}]", coords.get("W").toString());
+            String world = verifyRegex("_(.+)", coords.get("W").toString());
             if (world == "false") {
                 world = "overworld";
             }

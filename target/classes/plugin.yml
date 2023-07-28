@@ -1,5 +1,5 @@
 name: Waypoint
-version: '1.0-SNAPSHOT'
+version: '1.1'
 main: me.alvaro.waypoint.Waypoint
 api-version: 1.19
 authors: [ Alvaro ]
@@ -30,3 +30,8 @@ commands:
     aliases:
       - waddcur
     usage: "Uso: /<command> nomeCoordenada"
+  waypointTeleport:
+    description: Se teleportar para uma coordenada salva a partir de seu ID
+    aliases:
+      - wtp
+    usage: "Uso: /<command> ID ou nomeCoordenada"

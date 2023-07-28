@@ -30,3 +30,8 @@ commands:
     aliases:
       - waddcur
     usage: "Uso: /<command> nomeCoordenada"
+  waypointTeleport:
+    description: Se teleportar para uma coordenada salva a partir de seu ID
+    aliases:
+      - wtp
+    usage: "Uso: /<command> ID ou nomeCoordenada"

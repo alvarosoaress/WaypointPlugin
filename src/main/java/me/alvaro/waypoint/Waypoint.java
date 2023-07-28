@@ -14,6 +14,8 @@ public final class Waypoint extends JavaPlugin {
         getCommand("waypointBook").setExecutor(new WaypointBook());
         getCommand("waypointRemove").setExecutor(new WaypointRemove());
         getCommand("waypointAddCurrent").setExecutor(new WaypointAddCurrent());
+        getCommand("waypointTeleport").setExecutor(new WaypointTeleport());
+        getCommand("waypointTeleport").setTabCompleter(new WaypointTeleportTabCompletion());
     }
 
     @Override

@@ -28,7 +28,7 @@ public class WayUtility {
             Location loc = p.getLocation();
 
             try {
-                Utility.addJson(args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), loc.getWorld(), p);
+                Utility.addJson(args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), loc.getWorld().getName(), p);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -53,7 +53,7 @@ public class WayUtility {
             Location loc = p.getLocation();
 
             try {
-                Utility.addJson(nome, (int) loc.getX(), (int) loc.getY(), (int) loc.getZ(), loc.getWorld(), p);
+                Utility.addJson(nome, (int) loc.getX(), (int) loc.getY(), (int) loc.getZ(), loc.getWorld().getName(), p);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
